@@ -82,7 +82,7 @@
 
     // Función para obtener la conversación almacenada en bd
     async function getChat_DB(firstTime) {
-        const resp = await fetch('https://bagbot-backend.onrender.com/get-chat-db');
+        const resp = await fetch(`https://bagbot-backend.onrender.com/get-chat-db?user_id=${userId}`);
         const data = await resp.json();
         chat = data;
             if (chat.length > 0 && firstTime){

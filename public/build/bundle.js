@@ -1827,10 +1827,10 @@ var app = (function () {
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "Escribe tu mensaje...");
     			input.disabled = input_disabled_value = /*showOpt*/ ctx[5] || /*locked*/ ctx[0];
-    			add_location(input, file_1, 267, 12, 10023);
+    			add_location(input, file_1, 267, 12, 10041);
     			attr_dev(button, "class", "btn btn-primary");
     			button.disabled = button_disabled_value = /*showOpt*/ ctx[5] || /*locked*/ ctx[0];
-    			add_location(button, file_1, 268, 12, 10213);
+    			add_location(button, file_1, 268, 12, 10231);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -1900,9 +1900,9 @@ var app = (function () {
     			button1 = element("button");
     			button1.textContent = "Ver Opciones";
     			attr_dev(button0, "class", "btn btn-primary");
-    			add_location(button0, file_1, 264, 12, 9803);
+    			add_location(button0, file_1, 264, 12, 9821);
     			attr_dev(button1, "class", "btn btn-primary extra svelte-1dcuo5m");
-    			add_location(button1, file_1, 265, 12, 9890);
+    			add_location(button1, file_1, 265, 12, 9908);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button0, anchor);
@@ -1969,21 +1969,21 @@ var app = (function () {
     			t4 = space();
     			button1 = element("button");
     			button1.textContent = "Ver Opciones";
-    			add_location(span, file_1, 257, 72, 9232);
+    			add_location(span, file_1, 257, 72, 9250);
     			attr_dev(div, "class", div_class_value = "errorPDF " + (/*errorPDF*/ ctx[8].length > 0 ? '' : 'noShow') + " svelte-1dcuo5m");
-    			add_location(div, file_1, 257, 12, 9172);
+    			add_location(div, file_1, 257, 12, 9190);
     			attr_dev(input, "class", "input-box svelte-1dcuo5m");
     			attr_dev(input, "type", "file");
     			attr_dev(input, "name", "file");
     			attr_dev(input, "accept", "application/pdf");
-    			add_location(input, file_1, 259, 16, 9359);
+    			add_location(input, file_1, 259, 16, 9377);
     			attr_dev(button0, "class", "btn btn-primary");
     			attr_dev(button0, "type", "submit");
-    			add_location(button0, file_1, 260, 16, 9495);
+    			add_location(button0, file_1, 260, 16, 9513);
     			attr_dev(button1, "class", "btn btn-primary extra svelte-1dcuo5m");
-    			add_location(button1, file_1, 261, 16, 9582);
+    			add_location(button1, file_1, 261, 16, 9600);
     			attr_dev(form, "class", "input-container svelte-1dcuo5m");
-    			add_location(form, file_1, 258, 12, 9274);
+    			add_location(form, file_1, 258, 12, 9292);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -2071,11 +2071,11 @@ var app = (function () {
     			div1 = element("div");
     			if_block1.c();
     			attr_dev(div0, "class", "messages svelte-1dcuo5m");
-    			add_location(div0, file_1, 244, 4, 8575);
+    			add_location(div0, file_1, 244, 4, 8593);
     			attr_dev(div1, "class", "input-container svelte-1dcuo5m");
-    			add_location(div1, file_1, 255, 4, 9050);
+    			add_location(div1, file_1, 255, 4, 9068);
     			attr_dev(div2, "class", "chatbox svelte-1dcuo5m");
-    			add_location(div2, file_1, 243, 0, 8549);
+    			add_location(div2, file_1, 243, 0, 8567);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -2253,7 +2253,7 @@ var app = (function () {
 
     	// Función para obtener la conversación almacenada en bd
     	async function getChat_DB(firstTime) {
-    		const resp = await fetch('https://bagbot-backend.onrender.com/get-chat-db');
+    		const resp = await fetch(`https://bagbot-backend.onrender.com/get-chat-db?user_id=${userId}`);
     		const data = await resp.json();
     		$$invalidate(1, chat = data);
 
