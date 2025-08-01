@@ -738,9 +738,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Inicia sesión para acceder a esta sección";
     			attr_dev(p, "class", "msgLogin svelte-1tv4kro");
-    			add_location(p, file$a, 32, 29, 934);
+    			add_location(p, file$a, 32, 29, 952);
     			attr_dev(div, "class", "msgLoginSect svelte-1tv4kro");
-    			add_location(div, file$a, 32, 3, 908);
+    			add_location(div, file$a, 32, 3, 926);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -850,7 +850,7 @@ var app = (function () {
     			button = element("button");
     			t = text(t_value);
     			attr_dev(button, "class", "btn btn-primary svelte-1tv4kro");
-    			add_location(button, file$a, 29, 4, 786);
+    			add_location(button, file$a, 29, 4, 804);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -906,11 +906,11 @@ var app = (function () {
     			div0 = element("div");
     			if_block.c();
     			attr_dev(h3, "class", "history_title svelte-1tv4kro");
-    			add_location(h3, file$a, 25, 1, 668);
+    			add_location(h3, file$a, 25, 1, 686);
     			attr_dev(div0, "class", "history_content svelte-1tv4kro");
-    			add_location(div0, file$a, 26, 1, 710);
+    			add_location(div0, file$a, 26, 1, 728);
     			attr_dev(div1, "class", "history svelte-1tv4kro");
-    			add_location(div1, file$a, 24, 0, 645);
+    			add_location(div1, file$a, 24, 0, 663);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -967,7 +967,7 @@ var app = (function () {
     	let dates = [];
 
     	async function loadDates() {
-    		const res = await fetch("https://bagbot-backend.onrender.com/dates");
+    		const res = await fetch(`https://bagbot-backend.onrender.com/dates?user_id=${userId}`);
     		$$invalidate(1, dates = await res.json());
     	}
 
@@ -1501,14 +1501,14 @@ var app = (function () {
 
     function get_each_context_1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[36] = list[i];
-    	child_ctx[40] = i;
+    	child_ctx[37] = list[i];
+    	child_ctx[41] = i;
     	return child_ctx;
     }
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[36] = list[i];
+    	child_ctx[37] = list[i];
     	return child_ctx;
     }
 
@@ -1520,7 +1520,7 @@ var app = (function () {
     	let current;
     	let each_value_1 = /*chat*/ ctx[1];
     	validate_each_argument(each_value_1);
-    	const get_key = ctx => /*i*/ ctx[40];
+    	const get_key = ctx => /*i*/ ctx[41];
     	validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
 
     	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -1699,9 +1699,9 @@ var app = (function () {
 
     	messageblock = new MessageBlock({
     			props: {
-    				message: /*message*/ ctx[36],
+    				message: /*message*/ ctx[37],
     				locked: /*locked*/ ctx[0],
-    				lastMessage: /*i*/ ctx[40] === /*chat*/ ctx[1].length - 1,
+    				lastMessage: /*i*/ ctx[41] === /*chat*/ ctx[1].length - 1,
     				chatLength: /*chat*/ ctx[1].length
     			},
     			$$inline: true
@@ -1725,9 +1725,9 @@ var app = (function () {
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
     			const messageblock_changes = {};
-    			if (dirty[0] & /*chat*/ 2) messageblock_changes.message = /*message*/ ctx[36];
+    			if (dirty[0] & /*chat*/ 2) messageblock_changes.message = /*message*/ ctx[37];
     			if (dirty[0] & /*locked*/ 1) messageblock_changes.locked = /*locked*/ ctx[0];
-    			if (dirty[0] & /*chat*/ 2) messageblock_changes.lastMessage = /*i*/ ctx[40] === /*chat*/ ctx[1].length - 1;
+    			if (dirty[0] & /*chat*/ 2) messageblock_changes.lastMessage = /*i*/ ctx[41] === /*chat*/ ctx[1].length - 1;
     			if (dirty[0] & /*chat*/ 2) messageblock_changes.chatLength = /*chat*/ ctx[1].length;
     			messageblock.$set(messageblock_changes);
     		},
@@ -1764,7 +1764,7 @@ var app = (function () {
 
     	messageblock = new MessageBlock({
     			props: {
-    				message: /*message*/ ctx[36],
+    				message: /*message*/ ctx[37],
     				lastMessage: "true"
     			},
     			$$inline: true
@@ -1806,7 +1806,7 @@ var app = (function () {
     	return block;
     }
 
-    // (266:8) {:else}
+    // (267:8) {:else}
     function create_else_block$4(ctx) {
     	let input;
     	let input_disabled_value;
@@ -1827,22 +1827,22 @@ var app = (function () {
     			attr_dev(input, "type", "text");
     			attr_dev(input, "placeholder", "Escribe tu mensaje...");
     			input.disabled = input_disabled_value = /*showOpt*/ ctx[5] || /*locked*/ ctx[0];
-    			add_location(input, file_1, 266, 12, 9906);
+    			add_location(input, file_1, 267, 12, 10023);
     			attr_dev(button, "class", "btn btn-primary");
     			button.disabled = button_disabled_value = /*showOpt*/ ctx[5] || /*locked*/ ctx[0];
-    			add_location(button, file_1, 267, 12, 10096);
+    			add_location(button, file_1, 268, 12, 10213);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*userMessage*/ ctx[3]);
-    			/*input_binding*/ ctx[22](input);
+    			/*input_binding*/ ctx[23](input);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
     			append_dev(button, t1);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[21]),
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[22]),
     					listen_dev(input, "keydown", /*handleKeyPress*/ ctx[11], false, false, false, false),
     					listen_dev(button, "click", /*sendMessage*/ ctx[12], false, false, false, false)
     				];
@@ -1865,7 +1865,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(input);
-    			/*input_binding*/ ctx[22](null);
+    			/*input_binding*/ ctx[23](null);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
     			mounted = false;
@@ -1877,7 +1877,7 @@ var app = (function () {
     		block,
     		id: create_else_block$4.name,
     		type: "else",
-    		source: "(266:8) {:else}",
+    		source: "(267:8) {:else}",
     		ctx
     	});
 
@@ -1886,30 +1886,45 @@ var app = (function () {
 
     // (264:83) 
     function create_if_block_1$3(ctx) {
-    	let button;
+    	let button0;
+    	let t1;
+    	let button1;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			button = element("button");
-    			button.textContent = "Descargar";
-    			attr_dev(button, "class", "btn btn-primary");
-    			add_location(button, file_1, 264, 12, 9803);
+    			button0 = element("button");
+    			button0.textContent = "Descargar";
+    			t1 = space();
+    			button1 = element("button");
+    			button1.textContent = "Ver Opciones";
+    			attr_dev(button0, "class", "btn btn-primary");
+    			add_location(button0, file_1, 264, 12, 9803);
+    			attr_dev(button1, "class", "btn btn-primary extra svelte-1dcuo5m");
+    			add_location(button1, file_1, 265, 12, 9890);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, button, anchor);
+    			insert_dev(target, button0, anchor);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, button1, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*downloadPDF*/ ctx[15], false, false, false, false);
+    				dispose = [
+    					listen_dev(button0, "click", /*downloadPDF*/ ctx[15], false, false, false, false),
+    					listen_dev(button1, "click", /*click_handler_1*/ ctx[21], false, false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(button0);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(button1);
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -2461,6 +2476,7 @@ var app = (function () {
 
     	const change_handler = e => $$invalidate(7, file = e.target.files[0]);
     	const click_handler = () => optionsMenu("Ver Opciones");
+    	const click_handler_1 = () => optionsMenu("Ver Opciones");
 
     	function input_input_handler() {
     		userMessage = this.value;
@@ -2583,6 +2599,7 @@ var app = (function () {
     		div0_binding,
     		change_handler,
     		click_handler,
+    		click_handler_1,
     		input_input_handler,
     		input_binding
     	];

@@ -7,7 +7,7 @@
 	isLoggedIn.subscribe(value => { loggedIn = value; });
 	let dates = [];
 	async function loadDates() {
-		const res = await fetch("https://bagbot-backend.onrender.com/dates");
+		const res = await fetch(`https://bagbot-backend.onrender.com/dates?user_id=${userId}`);
 		dates = await res.json();
 	}
 	// Solo carga fechas si el usuario está logueado

@@ -263,6 +263,7 @@ function optionsMenu(option) {
             </form>
         {:else if userOption === "📝 Resumir un recurso PDF" && showButtonDownload}
             <button class="btn btn-primary" on:click={downloadPDF}>Descargar</button> 
+            <button class="btn btn-primary extra" on:click={() => optionsMenu("Ver Opciones")}>Ver Opciones</button>
         {:else}
             <input class="input-box" type="text" bind:value={userMessage} bind:this={inputRef} on:keydown={handleKeyPress} placeholder="Escribe tu mensaje..." disabled={showOpt || locked}/>
             <button class="btn btn-primary" on:click={sendMessage} disabled={showOpt || locked}>Enviar</button> 
