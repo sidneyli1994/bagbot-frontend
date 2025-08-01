@@ -723,11 +723,11 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[6] = list[i];
+    	child_ctx[7] = list[i];
     	return child_ctx;
     }
 
-    // (32:2) {:else}
+    // (34:2) {:else}
     function create_else_block$5(ctx) {
     	let div;
     	let p;
@@ -738,9 +738,9 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "Inicia sesión para acceder a esta sección";
     			attr_dev(p, "class", "msgLogin svelte-1tv4kro");
-    			add_location(p, file$a, 32, 29, 952);
+    			add_location(p, file$a, 34, 29, 1060);
     			attr_dev(div, "class", "msgLoginSect svelte-1tv4kro");
-    			add_location(div, file$a, 32, 3, 926);
+    			add_location(div, file$a, 34, 3, 1034);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -756,14 +756,14 @@ var app = (function () {
     		block,
     		id: create_else_block$5.name,
     		type: "else",
-    		source: "(32:2) {:else}",
+    		source: "(34:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (28:2) {#if loggedIn}
+    // (30:2) {#if loggedIn}
     function create_if_block$7(ctx) {
     	let each_1_anchor;
     	let each_value = /*dates*/ ctx[1];
@@ -826,23 +826,23 @@ var app = (function () {
     		block,
     		id: create_if_block$7.name,
     		type: "if",
-    		source: "(28:2) {#if loggedIn}",
+    		source: "(30:2) {#if loggedIn}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (29:3) {#each dates as date}
+    // (31:3) {#each dates as date}
     function create_each_block$1(ctx) {
     	let button;
-    	let t_value = /*date*/ ctx[6].beauty + "";
+    	let t_value = /*date*/ ctx[7].beauty + "";
     	let t;
     	let mounted;
     	let dispose;
 
     	function click_handler() {
-    		return /*click_handler*/ ctx[3](/*date*/ ctx[6]);
+    		return /*click_handler*/ ctx[3](/*date*/ ctx[7]);
     	}
 
     	const block = {
@@ -850,7 +850,7 @@ var app = (function () {
     			button = element("button");
     			t = text(t_value);
     			attr_dev(button, "class", "btn btn-primary svelte-1tv4kro");
-    			add_location(button, file$a, 29, 4, 804);
+    			add_location(button, file$a, 31, 4, 912);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
@@ -863,7 +863,7 @@ var app = (function () {
     		},
     		p: function update(new_ctx, dirty) {
     			ctx = new_ctx;
-    			if (dirty & /*dates*/ 2 && t_value !== (t_value = /*date*/ ctx[6].beauty + "")) set_data_dev(t, t_value);
+    			if (dirty & /*dates*/ 2 && t_value !== (t_value = /*date*/ ctx[7].beauty + "")) set_data_dev(t, t_value);
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(button);
@@ -876,7 +876,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(29:3) {#each dates as date}",
+    		source: "(31:3) {#each dates as date}",
     		ctx
     	});
 
@@ -906,11 +906,11 @@ var app = (function () {
     			div0 = element("div");
     			if_block.c();
     			attr_dev(h3, "class", "history_title svelte-1tv4kro");
-    			add_location(h3, file$a, 25, 1, 686);
+    			add_location(h3, file$a, 27, 1, 794);
     			attr_dev(div0, "class", "history_content svelte-1tv4kro");
-    			add_location(div0, file$a, 26, 1, 728);
+    			add_location(div0, file$a, 28, 1, 836);
     			attr_dev(div1, "class", "history svelte-1tv4kro");
-    			add_location(div1, file$a, 24, 0, 663);
+    			add_location(div1, file$a, 26, 0, 771);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -958,10 +958,15 @@ var app = (function () {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots('History', slots, []);
     	const dispatch = createEventDispatcher();
-    	let loggedIn;
+    	let loggedIn; //Esta logueado?
+    	let userId; //id del usuario
 
     	isLoggedIn.subscribe(value => {
     		$$invalidate(0, loggedIn = value);
+    	});
+
+    	userid.subscribe(value => {
+    		userId = value;
     	});
 
     	let dates = [];
@@ -993,9 +998,11 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		onMount,
     		isLoggedIn,
+    		userid,
     		createEventDispatcher,
     		dispatch,
     		loggedIn,
+    		userId,
     		dates,
     		loadDates,
     		selectDate
@@ -1003,6 +1010,7 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ('loggedIn' in $$props) $$invalidate(0, loggedIn = $$props.loggedIn);
+    		if ('userId' in $$props) userId = $$props.userId;
     		if ('dates' in $$props) $$invalidate(1, dates = $$props.dates);
     	};
 

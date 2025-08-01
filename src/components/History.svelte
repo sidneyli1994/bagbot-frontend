@@ -1,10 +1,12 @@
 <script>
 	import { onMount } from "svelte";
-	import { isLoggedIn } from '../store.js'; // Importamos el store
+	import { isLoggedIn, userid  } from '../store.js'; // Importamos el store
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-	let loggedIn;
+	let loggedIn; //Esta logueado?
+    let userId; //id del usuario
 	isLoggedIn.subscribe(value => { loggedIn = value; });
+	userid.subscribe(value => { userId = value; });
 	let dates = [];
 	async function loadDates() {
 		const res = await fetch(`https://bagbot-backend.onrender.com/dates?user_id=${userId}`);
