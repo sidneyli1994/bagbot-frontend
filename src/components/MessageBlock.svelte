@@ -76,7 +76,7 @@
 	min-height: 36px;
 	width: fit-content;
 	max-width: 80%;
-	font-size: 18px;
+	font-size: 17px;
 }
 .messageColumn{
 	flex-direction: column;

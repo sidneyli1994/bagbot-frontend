@@ -1160,11 +1160,11 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "Ver Opciones";
     			add_location(strong, file$9, 47, 126, 2665);
-    			attr_dev(p, "class", "extra-text svelte-vp1x9f");
+    			attr_dev(p, "class", "extra-text svelte-15drrj2");
     			add_location(p, file$9, 47, 4, 2543);
-    			attr_dev(button, "class", "btn btn-primary extra svelte-vp1x9f");
+    			attr_dev(button, "class", "btn btn-primary extra svelte-15drrj2");
     			add_location(button, file$9, 48, 4, 2746);
-    			attr_dev(div, "class", "extra-message svelte-vp1x9f");
+    			attr_dev(div, "class", "extra-message svelte-15drrj2");
     			add_location(div, file$9, 46, 3, 2511);
     		},
     		m: function mount(target, anchor) {
@@ -1228,7 +1228,7 @@ var app = (function () {
     			if (if_block0) if_block0.c();
     			t2 = space();
     			if (if_block1) if_block1.c();
-    			attr_dev(img, "class", "avatar svelte-vp1x9f");
+    			attr_dev(img, "class", "avatar svelte-15drrj2");
 
     			if (!src_url_equal(img.src, img_src_value = /*message*/ ctx[0].type === 0
     			? /*user_avatar*/ ctx[7]
@@ -1243,10 +1243,10 @@ var app = (function () {
 
     			attr_dev(section, "class", section_class_value = "" + (null_to_empty(`${/*message*/ ctx[0].type === 0
 			? 'message own-message'
-			: 'message'} ${/*showOpt*/ ctx[4] ? 'messageColumn' : ''}`) + " svelte-vp1x9f"));
+			: 'message'} ${/*showOpt*/ ctx[4] ? 'messageColumn' : ''}`) + " svelte-15drrj2"));
 
     			add_location(section, file$9, 32, 1, 1267);
-    			attr_dev(div1, "class", div1_class_value = "container " + (/*message*/ ctx[0].type === 0 ? 'own-container' : '') + " svelte-vp1x9f");
+    			attr_dev(div1, "class", div1_class_value = "container " + (/*message*/ ctx[0].type === 0 ? 'own-container' : '') + " svelte-15drrj2");
     			add_location(div1, file$9, 30, 0, 1106);
     		},
     		l: function claim(nodes) {
@@ -1305,11 +1305,11 @@ var app = (function () {
 
     			if (dirty & /*message, showOpt*/ 17 && section_class_value !== (section_class_value = "" + (null_to_empty(`${/*message*/ ctx[0].type === 0
 			? 'message own-message'
-			: 'message'} ${/*showOpt*/ ctx[4] ? 'messageColumn' : ''}`) + " svelte-vp1x9f"))) {
+			: 'message'} ${/*showOpt*/ ctx[4] ? 'messageColumn' : ''}`) + " svelte-15drrj2"))) {
     				attr_dev(section, "class", section_class_value);
     			}
 
-    			if (dirty & /*message*/ 1 && div1_class_value !== (div1_class_value = "container " + (/*message*/ ctx[0].type === 0 ? 'own-container' : '') + " svelte-vp1x9f")) {
+    			if (dirty & /*message*/ 1 && div1_class_value !== (div1_class_value = "container " + (/*message*/ ctx[0].type === 0 ? 'own-container' : '') + " svelte-15drrj2")) {
     				attr_dev(div1, "class", div1_class_value);
     			}
     		},
