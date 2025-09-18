@@ -4,13 +4,14 @@
     import { user, userid, isLoggedIn, showOptions, selectedOption } from '../store.js'; // para saber si es logueado o invitado
     export let selectedDate = null;
     export let locked = false; // Cuando locked==true, deshabilita input/botón        
-    
+
     let loggedIn; //Esta logueado?
     let userId; //id del usuario
     let name = ''; //name
     let userMessage = "";    // Input del usuario
     let inputRef; // referencia al input
 	let chat = [];      // Arreglo para almacenar la conversación
+    let isThinking = false; //Para saber si el chatbot esta pensando
 
     let chatEnd = null; //Carga el final del chat
 
@@ -35,11 +36,12 @@
         getChat_DB_byDate(selectedDate);
     }
     async function getChat_DB_byDate(date) {
-        const res = await fetch(`https://bagbot-backend.onrender.com/query/${date}`);
+        const res = await fetch(`https://bagbot-backend.onrender.com/query/${date}?user_id=${userId}`);
         chat = await res.json();
     }
 	// Función para enviar el mensaje al JSON
     async function sendMessage_JSON() {
+        isThinking = true;
         const response = await fetch('https://bagbot-backend.onrender.com/send-message-json', {
             method: 'POST',
             headers: {
@@ -49,6 +51,7 @@
         });
 
         const data = await response.json();
+        isThinking = false;
         chat = data;  // Actualizar la conversación con la respuesta del servidor
         userMessage = "";  // Limpiar el input después de enviar el mensaje
     }
@@ -71,6 +74,8 @@
         }
         } catch (err) {
             console.log(err)
+        } finally {
+            isThinking = false; // 👈 OCULTA los puntitos cuando llega respuesta
         }
     }
     // Función para obtener la conversación almacenada en el JSON
@@ -252,6 +257,11 @@ function optionsMenu(option) {
                 <MessageBlock {message} {locked} on:optionSel={optionSelected} lastMessage={i === chat.length - 1} chatLength={chat.length}/>
             {/each}
         {/if}
+        {#if isThinking}
+            <div class="thinking-dots">
+                <span></span><span></span><span></span>
+            </div>
+        {/if}
     </div>
     <div class="input-container">
         {#if userOption === "📝 Resumir un recurso PDF" && !showButtonDownload}
@@ -340,6 +350,35 @@ function optionsMenu(option) {
     }
     .btn.extra{
         margin-left: 10px;
+    }
+        .thinking-dots {
+        display: flex;
+        gap: 5px;
+        margin: 10px;
+        align-items: center;
+    }
+
+    .thinking-dots span {
+        width: 8px;
+        height: 8px;
+        background-color: #555;
+        border-radius: 50%;
+        display: inline-block;
+        animation: blink 1.4s infinite both;
+    }
+
+    .thinking-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .thinking-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    @keyframes blink {
+        0% { opacity: 0.2; }
+        20% { opacity: 1; }
+        100% { opacity: 0.2; }
     }
 @media only screen and (max-width: 1280px) {
 	input{

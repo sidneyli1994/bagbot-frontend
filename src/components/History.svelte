@@ -8,6 +8,8 @@
 	isLoggedIn.subscribe(value => { loggedIn = value; });
 	userid.subscribe(value => { userId = value; });
 	let dates = [];
+	let today = new Date().toISOString().split("T")[0]; // fecha de hoy yyyy-mm-dd
+
 	async function loadDates() {
 		const res = await fetch(`https://bagbot-backend.onrender.com/dates?user_id=${userId}`);
 		dates = await res.json();
@@ -21,13 +23,20 @@
 	function selectDate(date){
 		dispatch("selectedDate", date); // Enviar fecha al componente padre
 	}
-
+	function reloadPage() {
+        location.reload();
+    }
 </script>
 
 <div class="history">
 	<h3 class="history_title">Historial</h3>
 	<div class="history_content">
 		{#if loggedIn}
+			{#if !dates.find(d => d.original === today)}
+				<button class="btn btn-primary" on:click={reloadPage}>
+					{new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })}
+				</button>
+			{/if}
 			{#each dates as date}
 				<button class="btn btn-primary" on:click={() => selectDate(date.original)}>{date.beauty}</button>
 			{/each}
