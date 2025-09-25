@@ -254,7 +254,7 @@ function optionsMenu(option) {
             {/each}
         {:else}
             {#each chat as message, i (i)}
-                <MessageBlock {message} {locked} on:optionSel={optionSelected} lastMessage={i === chat.length - 1} chatLength={chat.length}/>
+                <MessageBlock {message} {locked} on:optionSel={optionSelected} lastMessage={i === chat.length - 1} chatLength={chat.length} selectedDate={selectedDate}/>
             {/each}
         {/if}
         {#if isThinking}

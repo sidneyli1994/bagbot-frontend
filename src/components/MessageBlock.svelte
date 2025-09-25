@@ -8,6 +8,8 @@
 	export let locked = false;
 	export let lastMessage = false;
 	export let chatLength = 0;
+	export let selectedDate = null;
+	let today = new Date().toISOString().split("T")[0];
 
 	let showOpt;
 	showOptions.subscribe(value => { showOpt = value; });
@@ -43,11 +45,13 @@
 				<button class="btn btn-primary" on:click={() => optionSelected("❓ Hacer una consulta libre")}>❓ Hacer una consulta libre</button>
 			</div>
 		{/if}
-		{#if lastMessage && chatLength>1 && !showOpt && !isAQuestion && message.type === 1 }
-			<div class="extra-message">
-				<p class="extra-text">¿Hay algo más en lo que te pueda ayudar, recuerda que no tengo acceso al contexto previo, es decir, <strong>no tengo memoria</strong>, o deseas ver el Menú de Opciones? --></p>
-				<button class="btn btn-primary extra" on:click={() => optionSelectedMenu("Ver Opciones")}>Ver Opciones</button>
-			</div>
+		{#if !selectedDate || selectedDate === today}
+			{#if lastMessage && chatLength>1 && !showOpt && !isAQuestion && message.type === 1 }
+				<div class="extra-message">
+					<p class="extra-text">¿Hay algo más en lo que te pueda ayudar sobre esta opción?, recuerda que no tengo acceso al contexto previo, es decir, <strong>no tengo memoria</strong>, ¿o deseas ver el Menú de Opciones? --></p>
+					<button class="btn btn-primary extra" on:click={() => optionSelectedMenu("Ver Opciones")}>Ver Opciones</button>
+				</div>
+			{/if}
 		{/if}
 	</section>
 	
